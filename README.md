@@ -1,6 +1,6 @@
 # Instructions to use this repository with syzygy
 
-Advanced users will not need my instructions, nor syzygy. The option that follows should work for everyone with a Unix-based system (macOS or Linux). I have no idea how to do this in Windows.
+Advanced users will not need my instructions, nor syzygy. 
 
 ## If first cloning into syzygy:
 
