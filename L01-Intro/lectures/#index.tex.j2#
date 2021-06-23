@@ -12,7 +12,7 @@
 \title{PHY254H1-SUM, University of Toronto \\ Lecture 01: $\vec F  = m\vec a$ problems}
 ((* endblock title *))
 
-((*- block header *))
+%((*- block header *))
 %\newcommand{\rads}{~rad.s$^{-1}$}
 %\newcommand{\BV}{Brunt-V\"ais\"al\"a{} }
 %\newcommand{\bnabla}{\boldsymbol{\nabla}}
@@ -47,4 +47,4 @@
 
 %\DefineVerbatimEnvironment{Verbatim}{Verbatim}{fontsize=\scriptsize}
 
-((* endblock header -*))
+%((* endblock header -*))
