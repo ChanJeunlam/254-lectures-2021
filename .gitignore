@@ -20,3 +20,5 @@ auto
 */auto
 *.pygtex
 */.ipynb_checkpoints
+auto
+DEPRECATED_*
