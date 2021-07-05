@@ -11,6 +11,12 @@ Advanced users will not need my instructions, nor syzygy.
     git clone git@github.com:ngrisouard/254-lectures-2021.git
     ```
     in the Terminal and hit return. This should create a new directory called `254-lectures-2020`, containing my lecture notes.
+    
+    An alternative is to use the http protocol:
+    
+    ```
+    git clone https://github.com/ngrisouard/254-lectures-2021.git
+    ```
 
 ## Refreshing the lecture notes
 
