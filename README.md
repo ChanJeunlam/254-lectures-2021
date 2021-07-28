@@ -1,6 +1,14 @@
+**On authorship:** lecture notes are not like articles or books. An instructor inherits a sets of notes from a colleague, and re-uses a lot of it, saving time, perpetuating departmental traditions, and allowing students to benefit from tried and tested material. Also, the goal is to explicitely transmit students *old* knowledge, not create new one. As such, I cannot claim sole authorship on these lecture notes. Many times, I drew inspiration from notes, written by previous coleagues who taught PHY254, "Classical Mechanics", at the University of Toronto. This is usually fine, as lecture notes are passed on in person and remain hidden from public view.
+
+Here however, to ease my student's access to these notes, I decided to make this repository public, while sometimes re-using the exact same word of my previous colleagues. I therefore feel the need to disclaim that co-authors on these notes are the following Professors:
+* Stephen Morris, soon to be happily retired (taught PHY254 in 2013-2015 and 2020),
+* Sabine Stanley, now at Johns Hopkins University (taught PHY254 in 2010 and 2012),
+* Paul Kushner (taught PHY254 in 2009 and 2011),
+* and perhaps more (feel free to reach out to be added on the list).
+
 # Instructions to use this repository with syzygy
 
-Advanced users will not need my instructions, nor syzygy. 
+Advanced users will not need my instructions, nor syzygy.
 
 ## If first cloning into syzygy:
 
@@ -11,9 +19,9 @@ Advanced users will not need my instructions, nor syzygy.
     git clone git@github.com:ngrisouard/254-lectures-2021.git
     ```
     in the Terminal and hit return. This should create a new directory called `254-lectures-2020`, containing my lecture notes.
-    
+
     An alternative is to use the http protocol:
-    
+
     ```
     git clone https://github.com/ngrisouard/254-lectures-2021.git
     ```
