@@ -32,10 +32,11 @@ theta, dottheta = ddp.generate_time_series(theta0, dottheta0, omegad, omega0,
                                            beta, gamma, time)
 
 ddp.plot_TS(theta, dottheta, omegad, omega0, beta,
-            gamma, time/Td, ftsz, tmin=24.)
+                   gamma, time/Td, ftsz, tmin=24.)
 
 ddp.plot_spectrum(theta, omegad, omega0, beta, gamma, time, 24., ftsz)
 
 theta_wrapped = ddp.wrap_theta(theta)
 ddp.plot_phase(theta_wrapped, dottheta, omegad, omega0, beta, gamma, time,
                ftsz, nconts=32)
+

@@ -64,6 +64,7 @@ def plot_TS(th, dth, wd, w0, b, g, t, ftsz, tmin):
                  fontsize=ftsz)
     plt.tight_layout()
     plt.show()
+    return
 
 
 def plot_phase(th, dth, wd, w0, b, g, t, ftsz, nconts):
