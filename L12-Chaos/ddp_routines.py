@@ -60,7 +60,7 @@ def plot_TS(th, dth, wd, w0, b, g, t, ftsz, tmin):
 
     plt.suptitle(r"Time series for " +
                  r"$\omega_0/\omega_d = {0:.1f}$, ".format(w0/wd) +
-                 r"$Q = {0:.0f}$, $\beta = {1:.2f}$ rad".format(w0/g, b),
+                 r"$Q = {0:.0f}$, $\beta = {1:.3f}$ rad".format(w0/g, b),
                  fontsize=ftsz)
     plt.tight_layout()
     plt.show()
@@ -89,7 +89,7 @@ def plot_phase(th, dth, wd, w0, b, g, t, ftsz, nconts):
     plt.ylabel(r'$\dot\theta/(\pi\omega_d)$ [rad/s]')
     plt.xlabel(r'$\theta/\pi$')
     plt.title(r"$\phi$-plot for $\omega_0/\omega_d = {0:.1f}$, ".format(w0/wd)
-              + r"$Q = {0:.0f}$, $\beta = {1:.1f}$ rad".format(w0/g, b),
+              + r"$Q = {0:.0f}$, $\beta = {1:.3f}$ rad".format(w0/g, b),
               fontsize=ftsz)
     # plt.axis(xmin=-1, xmax=1)
     plt.tight_layout()
@@ -118,7 +118,7 @@ def plot_spectrum(th, wd, w0, b, g, t, tmin, ftsz):
     plt.ylabel(r'$|A_n|$', fontsize=ftsz)
     plt.title(r"Fourier coeffs for " +
               r"$\omega_0/\omega_d = {0:.1f}$, ".format(w0/wd) +
-              r"$Q = {0:.0f}$, $\beta = {1:.2f}$".format(w0/g, b),
+              r"$Q = {0:.0f}$, $\beta = {1:.3f}$".format(w0/g, b),
               fontsize=ftsz)
     plt.xlim(0., 10.)
     plt.grid()
@@ -161,7 +161,7 @@ def plot_bifurcation(bmin, bmax, nbs, wd, w0, g, th0, dth0, n_per_Td, ftsz):
     # Redefine time quantities because bifurcation diagrams need more points
     Td = 2*pi/wd  # driving period
     dt = Td/n_per_Td  # time step
-    num_cycles = 1000  # number of driving periods
+    num_cycles = 300  # number of driving periods
     t_end = num_cycles*Td  # final time
 
     t = np.arange(0., t_end, dt)  # initialize the time array
@@ -177,21 +177,18 @@ def plot_bifurcation(bmin, bmax, nbs, wd, w0, g, th0, dth0, n_per_Td, ftsz):
     f2, ax2 = plt.subplots(1, 1, dpi=300)  # figure for dtheta/dt
 
     for beta in beta_array:  # scan through values of beta
-        # Generate time series with two different initial conditions
-        for th0 in [0., -pi/2]:
-            thvals, dthvals = generate_time_series(th0, dth0, wd, w0, beta, g,
-                                                   t)
+        thvals, dthvals = generate_time_series(th0, dth0, wd, w0, beta, g, t)
 
-            # Select which points we need, like in the Poincare section
-            # start at it_min, skip every n_per_cyc
-            Pc_thvals = wrap_theta(thvals[it_min::n_per_Td])/pi
-            Pc_dthvals = dthvals[it_min::n_per_Td]/pi/wd
+        # Select which points we need, like in the Poincare section
+        # start at it_min, skip every n_per_cyc
+        Pc_thvals = wrap_theta(thvals[it_min::n_per_Td])/pi
+        Pc_dthvals = dthvals[it_min::n_per_Td]/pi/wd
 
-            # We now have computed the values for this beta, we add to the plot
-            # Below is an array of same length as Pc_vals full of beta
-            x_values = np.full(len(Pc_thvals), beta)
-            ax1.plot(x_values, Pc_thvals, 'b.', markersize=1.)
-            ax2.plot(x_values, Pc_dthvals, 'g.', markersize=1.)
+        # We now have computed the values for this beta, we add to the plot
+        # Below is an array of same length as Pc_vals full of beta
+        x_values = np.full(len(Pc_thvals), beta)
+        ax1.plot(x_values, Pc_thvals, 'b.', markersize=.5)
+        ax2.plot(x_values, Pc_dthvals, 'g.', markersize=.5)
 
     # Finish the plot for theta
     ax1.set_xlabel(r'$\beta$ [rad]', fontsize=ftsz)
@@ -199,6 +196,9 @@ def plot_bifurcation(bmin, bmax, nbs, wd, w0, g, th0, dth0, n_per_Td, ftsz):
     ax1.set_title(r"Bifurcation plot for " +
                   r"$\omega_0/\omega_d = {0:.1f}$, ".format(w0/wd) +
                   r"$Q = {0:.0f}$".format(w0/g), fontsize=ftsz)
+
+    if abs(bmax-1.083) <= 0.0001:
+        ax1.set_ylim(-0.04, -0.0175)
     ax1.grid()
     f1.tight_layout()
     f1.savefig('ddp_bifurcation_bmin{0:.0f}_bmax{1:.0f}_theta.png'.format(
@@ -210,6 +210,8 @@ def plot_bifurcation(bmin, bmax, nbs, wd, w0, g, th0, dth0, n_per_Td, ftsz):
     ax2.set_title(r"Bifurcation plot for " +
                   r"$\omega_0/\omega_d = {0:.1f}$, ".format(w0/wd) +
                   r"$Q = {0:.0f}$".format(w0/g), fontsize=ftsz)
+    if abs(bmax-1.083) <= 0.0001:
+        ax2.set_ylim(0.93, 0.9675)
     ax2.grid()
     f2.tight_layout()
     f2.savefig('ddp_bifurcation_bmin{0:.0f}_bmax{1:.0f}_dtheta.png'.format(
